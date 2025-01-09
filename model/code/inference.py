@@ -52,7 +52,7 @@ def model_fn(model_dir):
     try:
         model = PathMNISTCNN()
         
-        state_dict = torch.load(f"{model_dir}/best_model.pth", map_location="cpu")
+        state_dict = torch.load(f"{model_dir}/best_model_2.pth", map_location="cpu")
         
         # Load the state dict into the model
         model.load_state_dict(state_dict)

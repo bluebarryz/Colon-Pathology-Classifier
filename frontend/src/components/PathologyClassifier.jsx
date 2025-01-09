@@ -3,12 +3,21 @@ import styles from "./PathologyClassifier.module.css";
 
 const PathologyClassifier = () => {
     const [selectedFile, setSelectedFile] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null); // Add this state
     const [prediction, setPrediction] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const handleFileSelect = (event) => {
         const file = event.target.files[0];
-        if (file) setSelectedFile(file);
+        if (file) {
+            setSelectedFile(file);
+            // Create image preview
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleSubmit = async () => {
@@ -39,6 +48,12 @@ const PathologyClassifier = () => {
             <p>Upload an image to classify it</p>
 
             <input type="file" accept="image/*" onChange={handleFileSelect} className={styles.button} />
+
+            {imagePreview && (
+                <div>
+                    <img src={imagePreview} alt="Preview" style={{ width: "100px", margin: "20px 0" }} />
+                </div>
+            )}
 
             <button onClick={handleSubmit} disabled={loading || !selectedFile} className={styles.button}>
                 {loading ? "Processing..." : "Classify Image"}
