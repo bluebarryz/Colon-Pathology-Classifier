@@ -1,0 +1,7 @@
+flask
+flask-cors
+boto3
+pillow
+torchvision
+numpy
+python-dotenv
