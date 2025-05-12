@@ -1,6 +1,6 @@
 # Pathology CNN
 
-To view another of my projects (ResearchAgent), click here: https://github.com/bluebarryz/ResearchAgent.
+To view another one of my projects (ResearchAgent), click here: https://github.com/bluebarryz/ResearchAgent.
 
 ![The app ui](assets/ui.png)
 
